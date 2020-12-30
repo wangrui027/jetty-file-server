@@ -34,17 +34,17 @@ public class Application {
     private static void validation(String[] args) {
         if (args.length < 2) {
             println("请添加端口参数及文件服务器根目录参数，命令格式如下：");
-            println("java -jar jetty-file-server.jar 80 \"D:\\SOFT\"");
+            println("java -jar jetty-file-server.jar 1024 \"D:\\SOFT\"");
             System.exit(1);
         }
         try {
             int port = Integer.parseInt(args[0]);
-            if (port < 0 || port > 65535) {
-                println("端口号取值范围为：0 - 65535 之间");
+            if (port < 1024 || port > 65535) {
+                println("端口号取值范围为：1024 - 65535 之间");
                 System.exit(1);
             }
         } catch (NumberFormatException e) {
-            println("端口号取值范围为：0 - 65535 之间");
+            println("端口号取值范围为：1024 - 65535 之间");
             System.exit(1);
         }
         File file = new File(args[1]);
